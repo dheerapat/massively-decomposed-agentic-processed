@@ -1,6 +1,6 @@
 # MAKER Framework - Towers of Hanoi Implementation
 
-This project implements the MAKER (Massively Decomposed Agentic Processes) framework from the paper "SOLVING A MILLION-STEP LLM TASK WITH ZERO ERRORS" (arXiv:2511.09030v1). It runs a 10-disk (1,023-step) Towers of Hanoi simulation using the MAKER framework to get the next move from an LLM at each step.
+This project implements the MAKER (Massively Decomposed Agentic Processes) framework from the paper "SOLVING A MILLION-STEP LLM TASK WITH ZERO ERRORS" ( [arXiv:2511.09030v1](https://arxiv.org/abs/2511.09030) ). It runs a 10-disk (1,023-step) Towers of Hanoi simulation using the MAKER framework to get the next move from an LLM at each step.
 
 ## Project Overview
 
