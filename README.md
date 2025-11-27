@@ -118,3 +118,44 @@ The internal simulator implements the exact Hanoi logic from the prompt:
 This implementation is based on the MAKER framework described in:
 - "SOLVING A MILLION-STEP LLM TASK WITH ZERO ERRORS" (arXiv:2511.09030v1)
 - Appendix C of the paper contains the exact prompts and validation logic used here
+
+## Diagram
+
+```mermaid
+graph TD
+    %% Problem Start
+    A[Step 0: Initial Problem - User Goal: Solve Towers of Hanoi for 20 disks]
+    
+    A --> B(Define Subtask 1 - State: Initial - Prev_Move: None - Goal: Find move 1)
+    
+    %% Subtask Loop
+    B --> C{Start Voting Loop - Set vote threshold k=3 - Initialize Vote Tally}
+    
+    %% Voting Loop
+    C --> D[Generate Vote - Agent Call with prompt about rules, previous move, current state]
+    
+    D --> E{Red-Flagging - Is response valid? - Correct format? - Not overly long?}
+    
+    E -->|No Flagged| F[Discard Sample - e.g. Response was 2000 tokens long or format was Error]
+    
+    F --> D
+    
+    E -->|Yes Valid| G[Tally Valid Vote - Vote Tally: Candidate A 3 votes, Candidate B 1 vote]
+    
+    G --> H{Check for Winner - Is one candidate k votes ahead of all others?}
+    
+    H -->|No| D
+    
+    H -->|Yes| I[Declare Winning Action - Winner: Candidate A - Action: move 1,0,2]
+    
+    %% Apply and Continue
+    I --> J(Apply Winning Action - Execute move and update master problem state)
+    
+    J --> L(Define Subtask N+1 - State: Updated - Prev_Move: 1,0,2 - Goal: Find next move)
+    
+    L --> C
+    
+    L -.-> M(Continue iterations)
+    
+    M -.-> K[Step 1,048,575 - Goal: Find final move - Result: Zero errors]
+```
