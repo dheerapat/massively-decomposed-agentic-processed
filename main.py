@@ -10,8 +10,8 @@ It validates the LLM's "voted" move against an internal ground-truth
 simulator. The simulation will halt if an error is detected.
 
 !!! SETUP INSTRUCTIONS !!!
-1. Make sure you have the 'openai' package installed:
-   pip install openai
+1. Make sure you have the 'uv' installed on the system:
+   uv sync
 
 2. Set your OpenAI API key as an environment variable.
    - On macOS/Linux: export OPENAI_API_KEY='your_api_key_here'
